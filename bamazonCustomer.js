@@ -28,7 +28,7 @@ connection.query('SELECT * FROM products', function(err, res){
     {
       type: "input",
       name: "id",
-			message: "What is the ID of the product you would like to purchase?",
+			message: "What is the ID of the product you would like to purchase from the list above?",
 			validate: function(value){
 				// isNaN means Not a Number. false checks to see if you are getting a number. parseInt can read strings to turn them into an integer. this code below makes sure that there is an integer entered as the value.
         if(isNaN(value) == false && parseInt(value) <= res.length && parseInt(value) > 0){
@@ -41,7 +41,7 @@ connection.query('SELECT * FROM products', function(err, res){
     {
       type: "input",
       name: "qty",
-      message: "How much would you like to purchase?",
+      message: "How many do you want?",
       validate: function(value){
         if(isNaN(value)){
           return false;
@@ -64,7 +64,7 @@ connection.query('SELECT * FROM products', function(err, res){
         {itemID: ans.id}
         ], function(err, result){
             if(err) throw err;
-            console.log("Success! Your total is $" + grandTotal.toFixed(2) + ". Your item(s) will be shipped to you in 3-5 business days.");
+            console.log("Success! Your total is $" + grandTotal.toFixed(2) + ". Your item(s) are being processed and should arrive soon.");
         });
 
         connection.query("SELECT * FROM departments", function(err, deptRes){
@@ -86,7 +86,7 @@ connection.query('SELECT * FROM products', function(err, res){
         });
 
       } else{
-        console.log("Sorry, there's not enough in stock!");
+        console.log("Sorry, we out!");
       }
 
       reprompt();
@@ -99,12 +99,12 @@ function reprompt(){
   inquirer.prompt([{
     type: "confirm",
     name: "reply",
-    message: "Would you like to purchase another item?"
+    message: "Keep shopping?"
   }]).then(function(ans){
     if(ans.reply){
       start();
     } else{
-      console.log("See you soon!");
+      console.log("Have a nice day!");
     }
   });
 }
