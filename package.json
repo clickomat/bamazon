@@ -1,0 +1,22 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "amazon like storefront",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clickomat/bamazon.git"
+  },
+  "author": "S.Connell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clickomat/bamazon/issues"
+  },
+  "homepage": "https://github.com/clickomat/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^5.2.0"
+  }
+}
